@@ -1,0 +1,1278 @@
+Analysis & Synthesis report for pipeline
+Sun Jun 30 00:16:49 2013
+Quartus II 64-Bit Version 12.0 Build 178 05/31/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Source assignments for DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated
+ 13. Source assignments for DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated|altsyncram_6nl1:altsyncram1
+ 14. Source assignments for MIPS_Register:mipsregister|altsyncram:register_rtl_0|altsyncram_uoj1:auto_generated
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |pipeline
+ 16. Parameter Settings for User Entity Instance: InstruMemory:instruct
+ 17. Parameter Settings for User Entity Instance: DataMemory:datamemory
+ 18. Parameter Settings for Inferred Entity Instance: DataMemory:datamemory|altsyncram:ram_rtl_0
+ 19. Parameter Settings for Inferred Entity Instance: MIPS_Register:mipsregister|altsyncram:register_rtl_0
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_13"
+ 22. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_12"
+ 23. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_11"
+ 24. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_10"
+ 25. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_16"
+ 26. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_15"
+ 27. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_14"
+ 28. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_13"
+ 29. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_12"
+ 30. Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_11"
+ 31. Port Connectivity Checks: "Memory_ShiftOutput:memshift"
+ 32. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_3"
+ 33. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_2"
+ 34. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_1"
+ 35. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_0"
+ 36. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_7"
+ 37. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_6"
+ 38. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_5"
+ 39. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_2"
+ 40. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_1"
+ 41. Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_0"
+ 42. Port Connectivity Checks: "Register_ShiftOutput:regshift"
+ 43. Port Connectivity Checks: "Condition_Check:condition_check|MUX8_1_Icontrol:MUX_Con"
+ 44. Port Connectivity Checks: "Condition_Check:condition_check|MUX8_1_SL:sl2"
+ 45. Port Connectivity Checks: "Condition_Check:condition_check|MUX8_1_SL:sl1"
+ 46. Port Connectivity Checks: "EX_MEM_Seg:seg3"
+ 47. Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux5"
+ 48. Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux4"
+ 49. Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux3"
+ 50. Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux2"
+ 51. Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux1"
+ 52. Port Connectivity Checks: "ALU:alu|MUX8_1_ALU:MUX"
+ 53. Port Connectivity Checks: "MUX8_1_ALU:mux8_one"
+ 54. Port Connectivity Checks: "Mux4_1:mux4_three"
+ 55. Port Connectivity Checks: "Mux4_1:mux4_two"
+ 56. Port Connectivity Checks: "Mux4_1:mux4_one"
+ 57. Port Connectivity Checks: "InstruMemory:instruct"
+ 58. Port Connectivity Checks: "Mux4_1:PC_selcet"
+ 59. Port Connectivity Checks: "HazardControl:hazard|Mux4_1_3:mux_PCSrc"
+ 60. Elapsed Time Per Partition
+ 61. Analysis & Synthesis Messages
+ 62. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                   ;
++------------------------------------+-------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sun Jun 30 00:16:49 2013     ;
+; Quartus II 64-Bit Version          ; 12.0 Build 178 05/31/2012 SJ Full Version ;
+; Revision Name                      ; pipeline                                  ;
+; Top-level Entity Name              ; pipeline                                  ;
+; Family                             ; Cyclone II                                ;
+; Total logic elements               ; 3,835                                     ;
+;     Total combinational functions  ; 2,968                                     ;
+;     Dedicated logic registers      ; 1,477                                     ;
+; Total registers                    ; 1477                                      ;
+; Total pins                         ; 574                                       ;
+; Total virtual pins                 ; 0                                         ;
+; Total memory bits                  ; 33,792                                    ;
+; Embedded Multiplier 9-bit elements ; 0                                         ;
+; Total PLLs                         ; 0                                         ;
++------------------------------------+-------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Top-level entity name                                                      ; pipeline           ; pipeline           ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2-4 processors         ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                       ;
++-------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path                ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                           ; Library ;
++-------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------+---------+
+; HazardControl.v                                 ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/HazardControl.v                                 ;         ;
+; Shifter.v                                       ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Shifter.v                                       ;         ;
+; NumExpansion.v                                  ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/NumExpansion.v                                  ;         ;
+; MIPS_Register.v                                 ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MIPS_Register.v                                 ;         ;
+; MEM_WB_Seg.v                                    ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MEM_WB_Seg.v                                    ;         ;
+; InsruMemory.v                                   ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/InsruMemory.v                                   ;         ;
+; IF_ID_Seg.v                                     ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/IF_ID_Seg.v                                     ;         ;
+; ID_EX_Seg.v                                     ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ID_EX_Seg.v                                     ;         ;
+; Forward.v                                       ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Forward.v                                       ;         ;
+; EX_MEM_Seg.v                                    ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/EX_MEM_Seg.v                                    ;         ;
+; DataMemory.v                                    ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/DataMemory.v                                    ;         ;
+; Condition_Check.v                               ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Condition_Check.v                               ;         ;
+; ALU.v                                           ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ALU.v                                           ;         ;
+; pipeline.v                                      ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/pipeline.v                                      ;         ;
+; Controller.v                                    ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Controller.v                                    ;         ;
+; PC.v                                            ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/PC.v                                            ;         ;
+; Memory_Shift.v                                  ; yes             ; User Verilog HDL File                                 ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Memory_Shift.v                                  ;         ;
+; altsyncram.tdf                                  ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/altsyncram.tdf                                          ;         ;
+; stratix_ram_block.inc                           ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/stratix_ram_block.inc                                   ;         ;
+; lpm_mux.inc                                     ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/lpm_mux.inc                                             ;         ;
+; lpm_decode.inc                                  ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/lpm_decode.inc                                          ;         ;
+; aglobal120.inc                                  ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/aglobal120.inc                                          ;         ;
+; a_rdenreg.inc                                   ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/a_rdenreg.inc                                           ;         ;
+; altrom.inc                                      ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/altrom.inc                                              ;         ;
+; altram.inc                                      ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/altram.inc                                              ;         ;
+; altdpram.inc                                    ; yes             ; Megafunction                                          ; f:/altera/12.0/quartus/libraries/megafunctions/altdpram.inc                                            ;         ;
+; db/altsyncram_34i1.tdf                          ; yes             ; Auto-Generated Megafunction                           ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/altsyncram_34i1.tdf                          ;         ;
+; db/altsyncram_6nl1.tdf                          ; yes             ; Auto-Generated Megafunction                           ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/altsyncram_6nl1.tdf                          ;         ;
+; db/pipeline.ram0_datamemory_5d7c1658.hdl.mif    ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/pipeline.ram0_datamemory_5d7c1658.hdl.mif    ;         ;
+; db/altsyncram_uoj1.tdf                          ; yes             ; Auto-Generated Megafunction                           ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/altsyncram_uoj1.tdf                          ;         ;
+; db/pipeline.ram0_mips_register_1bfaa9c6.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/pipeline.ram0_mips_register_1bfaa9c6.hdl.mif ;         ;
++-------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 3,835 ;
+;                                             ;       ;
+; Total combinational functions               ; 2968  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 2018  ;
+;     -- 3 input functions                    ; 594   ;
+;     -- <=2 input functions                  ; 356   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 2849  ;
+;     -- arithmetic mode                      ; 119   ;
+;                                             ;       ;
+; Total registers                             ; 1477  ;
+;     -- Dedicated logic registers            ; 1477  ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 574   ;
+; Total memory bits                           ; 33792 ;
+; Maximum fan-out node                        ; Clk   ;
+; Maximum fan-out                             ; 1541  ;
+; Total fan-out                               ; 16296 ;
+; Average fan-out                             ; 3.21  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                    ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; |pipeline                                 ; 2968 (212)        ; 1477 (0)     ; 33792       ; 0            ; 0       ; 0         ; 574  ; 0            ; |pipeline                                                                                                       ;              ;
+;    |ALU:alu|                              ; 418 (122)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|ALU:alu                                                                                               ;              ;
+;       |ALU_Controller:ALU_Con|            ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|ALU:alu|ALU_Controller:ALU_Con                                                                        ;              ;
+;       |Adder:adder|                       ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|ALU:alu|Adder:adder                                                                                   ;              ;
+;       |JudgeBit:Judge|                    ; 91 (91)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|ALU:alu|JudgeBit:Judge                                                                                ;              ;
+;       |MUX8_1_ALU:MUX|                    ; 156 (156)         ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|ALU:alu|MUX8_1_ALU:MUX                                                                                ;              ;
+;    |Condition_Check:condition_check|      ; 89 (21)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Condition_Check:condition_check                                                                       ;              ;
+;       |MUX8_1_Icontrol:MUX_Con|           ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Condition_Check:condition_check|MUX8_1_Icontrol:MUX_Con                                               ;              ;
+;       |MUX8_1_SL:sl1|                     ; 65 (65)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Condition_Check:condition_check|MUX8_1_SL:sl1                                                         ;              ;
+;       |MUX8_1_SL:sl2|                     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Condition_Check:condition_check|MUX8_1_SL:sl2                                                         ;              ;
+;    |Controller:controller|                ; 96 (96)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Controller:controller                                                                                 ;              ;
+;    |DataMemory:datamemory|                ; 55 (55)           ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|DataMemory:datamemory                                                                                 ;              ;
+;       |altsyncram:ram_rtl_0|              ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|DataMemory:datamemory|altsyncram:ram_rtl_0                                                            ;              ;
+;          |altsyncram_34i1:auto_generated| ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated                             ;              ;
+;             |altsyncram_6nl1:altsyncram1| ; 0 (0)             ; 0 (0)        ; 32768       ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated|altsyncram_6nl1:altsyncram1 ;              ;
+;    |EX_MEM_Seg:seg3|                      ; 130 (130)         ; 116 (116)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|EX_MEM_Seg:seg3                                                                                       ;              ;
+;    |Forward:forward|                      ; 30 (30)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Forward:forward                                                                                       ;              ;
+;    |HazardControl:hazard|                 ; 11 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|HazardControl:hazard                                                                                  ;              ;
+;       |Mux4_1_3:mux_PCSrc|                ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|HazardControl:hazard|Mux4_1_3:mux_PCSrc                                                               ;              ;
+;    |ID_EX_Seg:seg2|                       ; 183 (183)         ; 171 (171)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|ID_EX_Seg:seg2                                                                                        ;              ;
+;    |IF_ID_Seg:Seg1|                       ; 31 (31)           ; 61 (61)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|IF_ID_Seg:Seg1                                                                                        ;              ;
+;    |InstruMemory:instruct|                ; 99 (99)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|InstruMemory:instruct                                                                                 ;              ;
+;    |MEM_WB_Seg:seg4|                      ; 3 (3)             ; 74 (74)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MEM_WB_Seg:seg4                                                                                       ;              ;
+;    |MIPS_Register:mipsregister|           ; 906 (906)         ; 1024 (1024)  ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Register:mipsregister                                                                            ;              ;
+;       |altsyncram:register_rtl_0|         ; 0 (0)             ; 0 (0)        ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Register:mipsregister|altsyncram:register_rtl_0                                                  ;              ;
+;          |altsyncram_uoj1:auto_generated| ; 0 (0)             ; 0 (0)        ; 1024        ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Register:mipsregister|altsyncram:register_rtl_0|altsyncram_uoj1:auto_generated                   ;              ;
+;    |MIPS_Shifter:shifter|                 ; 300 (11)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Shifter:shifter                                                                                  ;              ;
+;       |Mux4_1:Mux1|                       ; 63 (63)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux1                                                                      ;              ;
+;       |Mux4_1:Mux2|                       ; 62 (62)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux2                                                                      ;              ;
+;       |Mux4_1:Mux3|                       ; 60 (60)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux3                                                                      ;              ;
+;       |Mux4_1:Mux4|                       ; 56 (56)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux4                                                                      ;              ;
+;       |Mux4_1:Mux5|                       ; 48 (48)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux5                                                                      ;              ;
+;    |MUX8_1_ALU:mux8_one|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|MUX8_1_ALU:mux8_one                                                                                   ;              ;
+;    |Memory_ShiftOutput:memshift|          ; 103 (1)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift                                                                           ;              ;
+;       |MUX4_1:mux4_1_10|                  ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX4_1:mux4_1_10                                                          ;              ;
+;       |MUX4_1:mux4_1_11|                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX4_1:mux4_1_11                                                          ;              ;
+;       |MUX4_1:mux4_1_13|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX4_1:mux4_1_13                                                          ;              ;
+;       |MUX8_1:mux8_1_10|                  ; 16 (16)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX8_1:mux8_1_10                                                          ;              ;
+;       |MUX8_1:mux8_1_11|                  ; 31 (31)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX8_1:mux8_1_11                                                          ;              ;
+;       |MUX8_1:mux8_1_12|                  ; 25 (25)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX8_1:mux8_1_12                                                          ;              ;
+;       |MUX8_1:mux8_1_13|                  ; 19 (19)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Memory_ShiftOutput:memshift|MUX8_1:mux8_1_13                                                          ;              ;
+;    |Mux4_1:PC_selcet|                     ; 61 (61)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Mux4_1:PC_selcet                                                                                      ;              ;
+;    |Mux4_1:mux4_one|                      ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Mux4_1:mux4_one                                                                                       ;              ;
+;    |Mux4_1:mux4_two|                      ; 64 (64)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Mux4_1:mux4_two                                                                                       ;              ;
+;    |NumExpansion:expansion|               ; 28 (28)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|NumExpansion:expansion                                                                                ;              ;
+;    |PC:pc|                                ; 0 (0)             ; 31 (31)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|PC:pc                                                                                                 ;              ;
+;    |Register_ShiftOutput:regshift|        ; 137 (2)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Register_ShiftOutput:regshift                                                                         ;              ;
+;       |MUX8_1:mux8_1_0|                   ; 41 (41)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_0                                                         ;              ;
+;       |MUX8_1:mux8_1_1|                   ; 18 (18)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_1                                                         ;              ;
+;       |MUX8_1:mux8_1_2|                   ; 51 (51)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_2                                                         ;              ;
+;       |MUX8_1:mux8_1_3|                   ; 25 (25)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_3                                                         ;              ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                 ;
++------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------+
+; Name                                                                                                             ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                             ;
++------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------+
+; DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated|altsyncram_6nl1:altsyncram1|ALTSYNCRAM ; AUTO ; True Dual Port   ; 1024         ; 32           ; 1024         ; 32           ; 32768 ; db/pipeline.ram0_DataMemory_5d7c1658.hdl.mif    ;
+; MIPS_Register:mipsregister|altsyncram:register_rtl_0|altsyncram_uoj1:auto_generated|ALTSYNCRAM                   ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024  ; db/pipeline.ram0_MIPS_Register_1bfaa9c6.hdl.mif ;
++------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                             ;
++------------------------------------------+-----------------------------------------------------+
+; Register name                            ; Reason for Removal                                  ;
++------------------------------------------+-----------------------------------------------------+
+; ID_EX_Seg:seg2|MemDataSrc_out[2]         ; Stuck at GND due to stuck port data_in              ;
+; EX_MEM_Seg:seg3|Rd_Write_Byte_en_out[3]  ; Merged with EX_MEM_Seg:seg3|Rd_Write_Byte_en_out[2] ;
+; EX_MEM_Seg:seg3|Mem_Byte_Write_out[1..3] ; Merged with EX_MEM_Seg:seg3|Mem_Byte_Write_out[0]   ;
+; ID_EX_Seg:seg2|Mem_Byte_Write_out[0..3]  ; Merged with ID_EX_Seg:seg2|MemDataSrc_out[0]        ;
+; ID_EX_Seg:seg2|Rd_Write_Byte_en_out[3]   ; Merged with ID_EX_Seg:seg2|Rd_Write_Byte_en_out[2]  ;
+; IF_ID_Seg:Seg1|Rd[3]                     ; Merged with IF_ID_Seg:Seg1|Func[4]                  ;
+; IF_ID_Seg:Seg1|Rd[4]                     ; Merged with IF_ID_Seg:Seg1|Shamt[0]                 ;
+; ID_EX_Seg:seg2|Immediate32_out[14]       ; Merged with ID_EX_Seg:seg2|Immediate32_out[4]       ;
+; ID_EX_Seg:seg2|Immediate32_out[15]       ; Merged with ID_EX_Seg:seg2|Immediate32_out[6]       ;
+; ID_EX_Seg:seg2|Shamt_out[0]              ; Merged with ID_EX_Seg:seg2|Rd_out[4]                ;
+; ID_EX_Seg:seg2|Immediate32_out[30]       ; Merged with ID_EX_Seg:seg2|Immediate32_out[20]      ;
+; ID_EX_Seg:seg2|Immediate32_out[31]       ; Merged with ID_EX_Seg:seg2|Immediate32_out[22]      ;
+; EX_MEM_Seg:seg3|Branch_addr_out[1]       ; Merged with EX_MEM_Seg:seg3|Branch_addr_out[0]      ;
+; IF_ID_Seg:Seg1|PC_Add_out[1]             ; Merged with IF_ID_Seg:Seg1|PC_Add_out[0]            ;
+; PC:pc|PC_out[1]                          ; Merged with PC:pc|PC_out[0]                         ;
+; ID_EX_Seg:seg2|PC_Add_out[1]             ; Merged with ID_EX_Seg:seg2|PC_Add_out[0]            ;
+; ID_EX_Seg:seg2|RegDst_out[1]             ; Merged with ID_EX_Seg:seg2|BranchSel_out            ;
+; Total Number of Removed Registers = 22   ;                                                     ;
++------------------------------------------+-----------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1477  ;
+; Number of registers using Synchronous Clear  ; 149   ;
+; Number of registers using Synchronous Load   ; 28    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1085  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+----------------------------------------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                                                     ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+----------------------------------------------------------------+----------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |pipeline|ID_EX_Seg:seg2|OperandA_out[3]                       ;                            ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |pipeline|ID_EX_Seg:seg2|OperandB_out[30]                      ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |pipeline|ID_EX_Seg:seg2|Rd_Write_Byte_en_out[0]               ;                            ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; |pipeline|EX_MEM_Seg:seg3|Rd_out[4]                            ;                            ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; |pipeline|EX_MEM_Seg:seg3|WBData_out[15]                       ;                            ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; |pipeline|MEM_WB_Seg:seg4|MemData_out[0]                       ;                            ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; |pipeline|MEM_WB_Seg:seg4|MemData_out[28]                      ;                            ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; |pipeline|MEM_WB_Seg:seg4|MemData_out[14]                      ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |pipeline|Mux4_1:PC_selcet|Data[0]                             ;                            ;
+; 4:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; |pipeline|Mux4_1:PC_selcet|Data[10]                            ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |pipeline|Condition_Check:condition_check|MemWriteEn[0]        ;                            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |pipeline|Mux4_1:mux4_one|Data[25]                             ;                            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |pipeline|MUX8_1_ALU:mux8_one|ALU_out                          ;                            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; |pipeline|Mux4_1:mux4_two|Data[29]                             ;                            ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux2|Data[31]            ;                            ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux3|Data[28]            ;                            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux4|Data[30]            ;                            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux5|Data[30]            ;                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_2|out    ;                            ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux1|Data[12]            ;                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux2|Data[1]             ;                            ;
+; 3:1                ; 28 bits   ; 56 LEs        ; 56 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux2|Data[24]            ;                            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux3|Data[2]             ;                            ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux3|Data[5]             ;                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux4|Data[1]             ;                            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux4|Data[10]            ;                            ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; |pipeline|MIPS_Shifter:shifter|Mux4_1:Mux5|Data[0]             ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|MIPS_Register:mipsregister|Mux24                     ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|DataMemory:datamemory|Mux29                          ;                            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; |pipeline|EX_MEM_Seg:seg3|WBData_out                           ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_0|out[3] ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; |pipeline|MIPS_Register:mipsregister|Mux1                      ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|MIPS_Register:mipsregister|Mux10                     ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|MIPS_Register:mipsregister|Mux23                     ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 8 LEs                ; 16 LEs                 ; |pipeline|DataMemory:datamemory|Mux7                           ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|DataMemory:datamemory|Mux10                          ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|DataMemory:datamemory|Mux18                          ;                            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_3|out[4] ;                            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_1|out[4] ;                            ;
+; 8:1                ; 18 bits   ; 90 LEs        ; 90 LEs               ; 0 LEs                  ; |pipeline|ALU:alu|MUX8_1_ALU:MUX|ALU_out[20]                   ;                            ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; |pipeline|Register_ShiftOutput:regshift|MUX8_1:mux8_1_2|out[2] ;                            ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 40 LEs               ; 8 LEs                  ; |pipeline|ALU:alu|MUX8_1_ALU:MUX|ALU_out[10]                   ;                            ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 25 LEs               ; 5 LEs                  ; |pipeline|ALU:alu|MUX8_1_ALU:MUX|ALU_out[5]                    ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+----------------------------------------------------------------+----------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Source assignments for DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------+
+; Assignment                      ; Value              ; From ; To                                 ;
++---------------------------------+--------------------+------+------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                  ;
++---------------------------------+--------------------+------+------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for DataMemory:datamemory|altsyncram:ram_rtl_0|altsyncram_34i1:auto_generated|altsyncram_6nl1:altsyncram1 ;
++---------------------------------+--------------------+------+----------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                             ;
++---------------------------------+--------------------+------+----------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                              ;
++---------------------------------+--------------------+------+----------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Source assignments for MIPS_Register:mipsregister|altsyncram:register_rtl_0|altsyncram_uoj1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                           ;
++---------------------------------+--------------------+------+----------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                            ;
++---------------------------------+--------------------+------+----------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |pipeline ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; ins_we         ; 0000  ; Unsigned Binary                                 ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: InstruMemory:instruct ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                            ;
+; ADDR_WIDTH     ; 32    ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DataMemory:datamemory ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; DATA_WIDTH     ; 32    ; Signed Integer                            ;
+; ADDR_WIDTH     ; 32    ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: DataMemory:datamemory|altsyncram:ram_rtl_0        ;
++------------------------------------+----------------------------------------------+----------------+
+; Parameter Name                     ; Value                                        ; Type           ;
++------------------------------------+----------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                            ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                           ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                          ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                           ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                          ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                            ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                    ; Untyped        ;
+; WIDTH_A                            ; 32                                           ; Untyped        ;
+; WIDTHAD_A                          ; 10                                           ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                         ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                 ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                         ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                         ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                         ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                         ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                         ; Untyped        ;
+; WIDTH_B                            ; 32                                           ; Untyped        ;
+; WIDTHAD_B                          ; 10                                           ; Untyped        ;
+; NUMWORDS_B                         ; 1024                                         ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                       ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                       ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                       ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                       ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                 ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                       ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                         ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                         ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                         ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                         ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                         ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                         ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                            ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                            ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                         ; Untyped        ;
+; BYTE_SIZE                          ; 8                                            ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                    ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                         ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                         ; Untyped        ;
+; INIT_FILE                          ; db/pipeline.ram0_DataMemory_5d7c1658.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                       ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                            ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                       ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                              ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                              ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                        ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                        ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                            ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone II                                   ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_34i1                              ; Untyped        ;
++------------------------------------+----------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: MIPS_Register:mipsregister|altsyncram:register_rtl_0 ;
++------------------------------------+-------------------------------------------------+----------------+
+; Parameter Name                     ; Value                                           ; Type           ;
++------------------------------------+-------------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                               ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                              ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                             ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                              ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                             ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                               ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                       ; Untyped        ;
+; WIDTH_A                            ; 32                                              ; Untyped        ;
+; WIDTHAD_A                          ; 5                                               ; Untyped        ;
+; NUMWORDS_A                         ; 32                                              ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                    ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                            ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                            ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                            ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                            ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                            ; Untyped        ;
+; WIDTH_B                            ; 32                                              ; Untyped        ;
+; WIDTHAD_B                          ; 5                                               ; Untyped        ;
+; NUMWORDS_B                         ; 32                                              ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                          ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                          ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                          ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                          ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                    ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                          ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                            ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                            ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                            ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                            ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                            ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                            ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                               ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                               ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                            ; Untyped        ;
+; BYTE_SIZE                          ; 8                                               ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                       ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                            ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                            ; Untyped        ;
+; INIT_FILE                          ; db/pipeline.ram0_MIPS_Register_1bfaa9c6.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                          ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                               ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                          ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                          ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                          ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                          ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                 ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                 ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                           ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                           ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                               ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone II                                      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_uoj1                                 ; Untyped        ;
++------------------------------------+-------------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                 ;
++-------------------------------------------+------------------------------------------------------+
+; Name                                      ; Value                                                ;
++-------------------------------------------+------------------------------------------------------+
+; Number of entity instances                ; 2                                                    ;
+; Entity Instance                           ; DataMemory:datamemory|altsyncram:ram_rtl_0           ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                            ;
+;     -- WIDTH_A                            ; 32                                                   ;
+;     -- NUMWORDS_A                         ; 1024                                                 ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                         ;
+;     -- WIDTH_B                            ; 32                                                   ;
+;     -- NUMWORDS_B                         ; 1024                                                 ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                            ;
+; Entity Instance                           ; MIPS_Register:mipsregister|altsyncram:register_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                            ;
+;     -- WIDTH_A                            ; 32                                                   ;
+;     -- NUMWORDS_A                         ; 32                                                   ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                         ;
+;     -- WIDTH_B                            ; 32                                                   ;
+;     -- NUMWORDS_B                         ; 32                                                   ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                               ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                         ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                 ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                            ;
++-------------------------------------------+------------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_13" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S7   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_12" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                   ;
+; S7   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_11" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                   ;
+; S3   ; Input ; Info     ; Stuck at GND                                   ;
+; S7   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX8_1:mux8_1_10" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                   ;
+; S3   ; Input ; Info     ; Stuck at GND                                   ;
+; S7   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_16" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_15" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                   ;
+; S1   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_14" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                   ;
+; S1   ; Input ; Info     ; Stuck at GND                                   ;
+; S2   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_13" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                   ;
+; S2   ; Input ; Info     ; Stuck at GND                                   ;
+; S3   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_12" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S2   ; Input ; Info     ; Stuck at GND                                   ;
+; S3   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift|MUX4_1:mux4_1_11" ;
++------+-------+----------+------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                        ;
++------+-------+----------+------------------------------------------------+
+; S3   ; Input ; Info     ; Stuck at GND                                   ;
++------+-------+----------+------------------------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "Memory_ShiftOutput:memshift" ;
++------------+-------+----------+-------------------------+
+; Port       ; Type  ; Severity ; Details                 ;
++------------+-------+----------+-------------------------+
+; IR[30..29] ; Input ; Info     ; Stuck at GND            ;
+; IR[31]     ; Input ; Info     ; Stuck at VCC            ;
++------------+-------+----------+-------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_3" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
+; S7   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_2" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
+; S7   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_1" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
+; S7   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX8_1:mux8_1_0" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
+; S7   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_7" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                    ;
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
+; S2   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_6" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                    ;
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_5" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_2" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_1" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S2   ; Input ; Info     ; Stuck at GND                                    ;
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift|MUX4_1:mux4_1_0" ;
++------+-------+----------+-------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                         ;
++------+-------+----------+-------------------------------------------------+
+; S1   ; Input ; Info     ; Stuck at GND                                    ;
+; S2   ; Input ; Info     ; Stuck at GND                                    ;
+; S3   ; Input ; Info     ; Stuck at GND                                    ;
++------+-------+----------+-------------------------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "Register_ShiftOutput:regshift" ;
++--------+-------+----------+-------------------------------+
+; Port   ; Type  ; Severity ; Details                       ;
++--------+-------+----------+-------------------------------+
+; IR[31] ; Input ; Info     ; Stuck at VCC                  ;
+; IR[30] ; Input ; Info     ; Stuck at GND                  ;
+; IR[29] ; Input ; Info     ; Stuck at VCC                  ;
++--------+-------+----------+-------------------------------+
+
+
++-------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Condition_Check:condition_check|MUX8_1_Icontrol:MUX_Con" ;
++------+-------+----------+-----------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                   ;
++------+-------+----------+-----------------------------------------------------------+
+; S0   ; Input ; Info     ; Stuck at GND                                              ;
+; S7   ; Input ; Info     ; Stuck at VCC                                              ;
++------+-------+----------+-----------------------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Condition_Check:condition_check|MUX8_1_SL:sl2" ;
++----------+-------+----------+---------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                     ;
++----------+-------+----------+---------------------------------------------+
+; S0       ; Input ; Info     ; Stuck at VCC                                ;
+; S1[2..0] ; Input ; Info     ; Stuck at VCC                                ;
+; S1[3]    ; Input ; Info     ; Stuck at GND                                ;
+; S2[1..0] ; Input ; Info     ; Stuck at VCC                                ;
+; S2[3..2] ; Input ; Info     ; Stuck at GND                                ;
+; S3[3..1] ; Input ; Info     ; Stuck at GND                                ;
+; S3[0]    ; Input ; Info     ; Stuck at VCC                                ;
+; S4[2..0] ; Input ; Info     ; Stuck at GND                                ;
+; S4[3]    ; Input ; Info     ; Stuck at VCC                                ;
+; S5[3..2] ; Input ; Info     ; Stuck at VCC                                ;
+; S5[1..0] ; Input ; Info     ; Stuck at GND                                ;
+; S6[3..1] ; Input ; Info     ; Stuck at VCC                                ;
+; S6[0]    ; Input ; Info     ; Stuck at GND                                ;
+; S7       ; Input ; Info     ; Stuck at VCC                                ;
++----------+-------+----------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "Condition_Check:condition_check|MUX8_1_SL:sl1" ;
++----------+-------+----------+---------------------------------------------+
+; Port     ; Type  ; Severity ; Details                                     ;
++----------+-------+----------+---------------------------------------------+
+; S0       ; Input ; Info     ; Stuck at VCC                                ;
+; S1[3..1] ; Input ; Info     ; Stuck at VCC                                ;
+; S1[0]    ; Input ; Info     ; Stuck at GND                                ;
+; S2[3..2] ; Input ; Info     ; Stuck at VCC                                ;
+; S2[1..0] ; Input ; Info     ; Stuck at GND                                ;
+; S3[2..0] ; Input ; Info     ; Stuck at GND                                ;
+; S3[3]    ; Input ; Info     ; Stuck at VCC                                ;
+; S4[3..1] ; Input ; Info     ; Stuck at GND                                ;
+; S4[0]    ; Input ; Info     ; Stuck at VCC                                ;
+; S5[1..0] ; Input ; Info     ; Stuck at VCC                                ;
+; S5[3..2] ; Input ; Info     ; Stuck at GND                                ;
+; S6[2..0] ; Input ; Info     ; Stuck at VCC                                ;
+; S6[3]    ; Input ; Info     ; Stuck at GND                                ;
+; S7       ; Input ; Info     ; Stuck at VCC                                ;
++----------+-------+----------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "EX_MEM_Seg:seg3"                                                                                                                                                                         ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                                                                                                                            ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Rd         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (5 bits) it drives.  The 27 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; PC_add_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
++------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux5" ;
++--------------+-------+----------+----------------------------+
+; Port         ; Type  ; Severity ; Details                    ;
++--------------+-------+----------+----------------------------+
+; Data1[15..0] ; Input ; Info     ; Stuck at GND               ;
++--------------+-------+----------+----------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux4" ;
++-------------+-------+----------+-----------------------------+
+; Port        ; Type  ; Severity ; Details                     ;
++-------------+-------+----------+-----------------------------+
+; Data1[7..0] ; Input ; Info     ; Stuck at GND                ;
++-------------+-------+----------+-----------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux3" ;
++-------------+-------+----------+-----------------------------+
+; Port        ; Type  ; Severity ; Details                     ;
++-------------+-------+----------+-----------------------------+
+; Data1[3..0] ; Input ; Info     ; Stuck at GND                ;
++-------------+-------+----------+-----------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux2" ;
++-------------+-------+----------+-----------------------------+
+; Port        ; Type  ; Severity ; Details                     ;
++-------------+-------+----------+-----------------------------+
+; Data1[1..0] ; Input ; Info     ; Stuck at GND                ;
++-------------+-------+----------+-----------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "MIPS_Shifter:shifter|Mux4_1:Mux1" ;
++----------+-------+----------+--------------------------------+
+; Port     ; Type  ; Severity ; Details                        ;
++----------+-------+----------+--------------------------------+
+; Data1[0] ; Input ; Info     ; Stuck at GND                   ;
++----------+-------+----------+--------------------------------+
+
+
++----------------------------------------------------+
+; Port Connectivity Checks: "ALU:alu|MUX8_1_ALU:MUX" ;
++-----------+-------+----------+---------------------+
+; Port      ; Type  ; Severity ; Details             ;
++-----------+-------+----------+---------------------+
+; S3[31..1] ; Input ; Info     ; Stuck at GND        ;
++-----------+-------+----------+---------------------+
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "MUX8_1_ALU:mux8_one" ;
++------+-------+----------+-----------------------+
+; Port ; Type  ; Severity ; Details               ;
++------+-------+----------+-----------------------+
+; S0   ; Input ; Info     ; Stuck at GND          ;
+; S3   ; Input ; Info     ; Stuck at GND          ;
+; S4   ; Input ; Info     ; Stuck at GND          ;
+; S5   ; Input ; Info     ; Stuck at GND          ;
+; S6   ; Input ; Info     ; Stuck at GND          ;
+; S7   ; Input ; Info     ; Stuck at GND          ;
++------+-------+----------+-----------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Mux4_1:mux4_three"                                                                                                                                     ;
++-------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                         ;
++-------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data0       ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "Data0[31..5]" will be connected to GND. ;
+; Data1       ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "Data1[31..5]" will be connected to GND. ;
+; Data2       ; Input  ; Warning  ; Input port expression (5 bits) is smaller than the input port (32 bits) it drives.  Extra input bit(s) "Data2[31..5]" will be connected to GND. ;
+; Data2       ; Input  ; Info     ; Stuck at VCC                                                                                                                                    ;
+; Data3       ; Input  ; Info     ; Stuck at GND                                                                                                                                    ;
+; Data[31..5] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                             ;
++-------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "Mux4_1:mux4_two" ;
++-------+-------+----------+------------------+
+; Port  ; Type  ; Severity ; Details          ;
++-------+-------+----------+------------------+
+; Data3 ; Input ; Info     ; Stuck at GND     ;
++-------+-------+----------+------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "Mux4_1:mux4_one" ;
++-------+-------+----------+------------------+
+; Port  ; Type  ; Severity ; Details          ;
++-------+-------+----------+------------------+
+; Data3 ; Input ; Info     ; Stuck at GND     ;
++-------+-------+----------+------------------+
+
+
++---------------------------------------------------+
+; Port Connectivity Checks: "InstruMemory:instruct" ;
++------+-------+----------+-------------------------+
+; Port ; Type  ; Severity ; Details                 ;
++------+-------+----------+-------------------------+
+; data ; Input ; Info     ; Stuck at GND            ;
+; we   ; Input ; Info     ; Stuck at GND            ;
++------+-------+----------+-------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Mux4_1:PC_selcet"                                                                                                                                                                      ;
++-------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type  ; Severity ; Details                                                                                                                                                                          ;
++-------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data1[1..0] ; Input ; Info     ; Stuck at GND                                                                                                                                                                     ;
+; Sel         ; Input ; Warning  ; Input port expression (3 bits) is wider than the input port (2 bits) it drives.  The 1 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++-------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "HazardControl:hazard|Mux4_1_3:mux_PCSrc" ;
++-------------+-------+----------+------------------------------------+
+; Port        ; Type  ; Severity ; Details                            ;
++-------------+-------+----------+------------------------------------+
+; Data0       ; Input ; Info     ; Stuck at GND                       ;
+; Data1[2]    ; Input ; Info     ; Stuck at GND                       ;
+; Data1[1]    ; Input ; Info     ; Stuck at VCC                       ;
+; Data1[0]    ; Input ; Info     ; Stuck at GND                       ;
+; Data2[2..1] ; Input ; Info     ; Stuck at GND                       ;
+; Data2[0]    ; Input ; Info     ; Stuck at VCC                       ;
+; Data3[2]    ; Input ; Info     ; Stuck at GND                       ;
+; Data3[1]    ; Input ; Info     ; Stuck at VCC                       ;
+; Data3[0]    ; Input ; Info     ; Stuck at GND                       ;
++-------------+-------+----------+------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:12     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 12.0 Build 178 05/31/2012 SJ Full Version
+    Info: Processing started: Sun Jun 30 00:16:21 2013
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pipeline -c pipeline
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 2 entities, in source file hazardcontrol.v
+    Info (12023): Found entity 1: Mux4_1_3
+    Info (12023): Found entity 2: HazardControl
+Info (12021): Found 2 design units, including 2 entities, in source file shifter.v
+    Info (12023): Found entity 1: Mux4_1
+    Info (12023): Found entity 2: MIPS_Shifter
+Info (12021): Found 1 design units, including 1 entities, in source file numexpansion.v
+    Info (12023): Found entity 1: NumExpansion
+Info (12021): Found 1 design units, including 1 entities, in source file mips_register.v
+    Info (12023): Found entity 1: MIPS_Register
+Info (12021): Found 1 design units, including 1 entities, in source file mem_wb_seg.v
+    Info (12023): Found entity 1: MEM_WB_Seg
+Info (12021): Found 1 design units, including 1 entities, in source file insrumemory.v
+    Info (12023): Found entity 1: InstruMemory
+Info (12021): Found 1 design units, including 1 entities, in source file if_id_seg.v
+    Info (12023): Found entity 1: IF_ID_Seg
+Info (12021): Found 1 design units, including 1 entities, in source file id_ex_seg.v
+    Info (12023): Found entity 1: ID_EX_Seg
+Info (12021): Found 1 design units, including 1 entities, in source file forward.v
+    Info (12023): Found entity 1: Forward
+Info (12021): Found 1 design units, including 1 entities, in source file ex_mem_seg.v
+    Info (12023): Found entity 1: EX_MEM_Seg
+Info (12021): Found 2 design units, including 2 entities, in source file datamemory.v
+    Info (12023): Found entity 1: Register_ShiftOutput
+    Info (12023): Found entity 2: DataMemory
+Info (12021): Found 4 design units, including 4 entities, in source file condition_check.v
+    Info (12023): Found entity 1: MUX8_1_Icontrol
+    Info (12023): Found entity 2: MUX8_1_SL
+    Info (12023): Found entity 3: MUX4_1_SL
+    Info (12023): Found entity 4: Condition_Check
+Info (12021): Found 5 design units, including 5 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU_Controller
+    Info (12023): Found entity 2: Adder
+    Info (12023): Found entity 3: MUX8_1_ALU
+    Info (12023): Found entity 4: JudgeBit
+    Info (12023): Found entity 5: ALU
+Info (12021): Found 1 design units, including 1 entities, in source file pipeline.v
+    Info (12023): Found entity 1: pipeline
+Info (12021): Found 1 design units, including 1 entities, in source file controller.v
+    Info (12023): Found entity 1: Controller
+Info (12021): Found 1 design units, including 1 entities, in source file pc.v
+    Info (12023): Found entity 1: PC
+Info (12021): Found 3 design units, including 3 entities, in source file memory_shift.v
+    Info (12023): Found entity 1: MUX8_1
+    Info (12023): Found entity 2: MUX4_1
+    Info (12023): Found entity 3: Memory_ShiftOutput
+Info (12127): Elaborating entity "pipeline" for the top level hierarchy
+Info (12128): Elaborating entity "HazardControl" for hierarchy "HazardControl:hazard"
+Info (12128): Elaborating entity "Mux4_1_3" for hierarchy "HazardControl:hazard|Mux4_1_3:mux_PCSrc"
+Info (12128): Elaborating entity "Mux4_1" for hierarchy "Mux4_1:PC_selcet"
+Info (12128): Elaborating entity "PC" for hierarchy "PC:pc"
+Info (12128): Elaborating entity "InstruMemory" for hierarchy "InstruMemory:instruct"
+Info (12128): Elaborating entity "IF_ID_Seg" for hierarchy "IF_ID_Seg:Seg1"
+Info (12128): Elaborating entity "Controller" for hierarchy "Controller:controller"
+Info (12128): Elaborating entity "MIPS_Register" for hierarchy "MIPS_Register:mipsregister"
+Info (12128): Elaborating entity "NumExpansion" for hierarchy "NumExpansion:expansion"
+Info (12128): Elaborating entity "ID_EX_Seg" for hierarchy "ID_EX_Seg:seg2"
+Info (12128): Elaborating entity "Forward" for hierarchy "Forward:forward"
+Info (12128): Elaborating entity "MUX8_1_ALU" for hierarchy "MUX8_1_ALU:mux8_one"
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu"
+Info (12128): Elaborating entity "ALU_Controller" for hierarchy "ALU:alu|ALU_Controller:ALU_Con"
+Info (12128): Elaborating entity "JudgeBit" for hierarchy "ALU:alu|JudgeBit:Judge"
+Info (12128): Elaborating entity "Adder" for hierarchy "ALU:alu|Adder:adder"
+Info (12128): Elaborating entity "MIPS_Shifter" for hierarchy "MIPS_Shifter:shifter"
+Info (12128): Elaborating entity "EX_MEM_Seg" for hierarchy "EX_MEM_Seg:seg3"
+Info (12128): Elaborating entity "Condition_Check" for hierarchy "Condition_Check:condition_check"
+Info (12128): Elaborating entity "MUX8_1_SL" for hierarchy "Condition_Check:condition_check|MUX8_1_SL:sl1"
+Info (12128): Elaborating entity "MUX8_1_Icontrol" for hierarchy "Condition_Check:condition_check|MUX8_1_Icontrol:MUX_Con"
+Info (12128): Elaborating entity "Register_ShiftOutput" for hierarchy "Register_ShiftOutput:regshift"
+Info (12128): Elaborating entity "MUX4_1" for hierarchy "Register_ShiftOutput:regshift|MUX4_1:mux4_1_0"
+Info (12128): Elaborating entity "MUX8_1" for hierarchy "Register_ShiftOutput:regshift|MUX8_1:mux8_1_0"
+Info (12128): Elaborating entity "DataMemory" for hierarchy "DataMemory:datamemory"
+Info (12128): Elaborating entity "Memory_ShiftOutput" for hierarchy "Memory_ShiftOutput:memshift"
+Info (12128): Elaborating entity "MEM_WB_Seg" for hierarchy "MEM_WB_Seg:seg4"
+Warning (276027): Inferred dual-clock RAM node "DataMemory:datamemory|ram_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "MIPS_Register:mipsregister|register_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "MIPS_Register:mipsregister|register" is uninferred due to asynchronous read logic
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/pipeline.ram0_InstruMemory_40db8005.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/db/pipeline.ram0_MIPS_Register_1bfaa9c6.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 2 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "DataMemory:datamemory|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/pipeline.ram0_DataMemory_5d7c1658.hdl.mif
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "MIPS_Register:mipsregister|register_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/pipeline.ram0_MIPS_Register_1bfaa9c6.hdl.mif
+Info (12130): Elaborated megafunction instantiation "DataMemory:datamemory|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "DataMemory:datamemory|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/pipeline.ram0_DataMemory_5d7c1658.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_34i1.tdf
+    Info (12023): Found entity 1: altsyncram_34i1
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_6nl1.tdf
+    Info (12023): Found entity 1: altsyncram_6nl1
+Info (12130): Elaborated megafunction instantiation "MIPS_Register:mipsregister|altsyncram:register_rtl_0"
+Info (12133): Instantiated megafunction "MIPS_Register:mipsregister|altsyncram:register_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/pipeline.ram0_MIPS_Register_1bfaa9c6.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_uoj1.tdf
+    Info (12023): Found entity 1: altsyncram_uoj1
+Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "PCSrc[2]" is stuck at GND
+    Warning (13410): Pin "MemDataSrc_ID[2]" is stuck at GND
+Info (144001): Generated suppressed messages file F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/pipeline.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 4578 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 573 output pins
+    Info (21061): Implemented 3940 logic cells
+    Info (21064): Implemented 64 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 444 megabytes
+    Info: Processing ended: Sun Jun 30 00:16:49 2013
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:13
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/pipeline.map.smsg.
+
+

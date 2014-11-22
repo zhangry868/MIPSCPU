@@ -1,0 +1,29 @@
+module MUX8_1_Icontrol(Sel,S0,S1,S2,S3,S4,S5,S6,S7,out);
+
+input [2:0] Sel;
+input S0,S1,S2,S3,S4,S5,S6,S7;
+output out;
+
+assign out = (Sel[2])? (Sel[1]?(Sel[0]?S7:S6) : (Sel[0]?S5:S4))  :  (Sel[1]?(Sel[0]?S3:S2) : (Sel[0]?S1:S0));
+
+endmodule
+
+module Condition_Check(
+input[2:0] Condition,
+input OverflowEn,Branch,Overflow,
+input [3:0] Mem_Byte_Write,
+input [3:0] Rd_Write_Byte_en,
+input Less,Zero,
+
+output BranchValid,
+output [3:0] RdWriteEn,
+output [3:0] MemWriteEn,
+);
+
+wire condition_out;
+MUX8_1_Icontrol MUX_Con(Condition,1'b0,Zero,!Zero,!less,!(less^Zero),less^Zero,less,1'b1,condition_out);
+assign BranchValid = condition_out & Branch;
+assign RdWriteEn = (OverflowEn == 0)?(4'b1111):((Overflow == 1'b1)?(4'b1111):(4'b0000));
+assign MemWriteEn = Mem_Byte_Write;
+
+endmodule

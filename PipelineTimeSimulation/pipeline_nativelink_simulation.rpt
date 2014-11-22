@@ -1,0 +1,21 @@
+Info: Start Nativelink Simulation process
+
+========= EDA Simulation Settings =====================
+
+Sim Mode              :  Gate
+Family                :  cycloneii
+Quartus root          :  f:/altera/12.0/quartus/bin64/
+Quartus sim root      :  f:/altera/12.0/quartus/eda/sim_lib
+Simulation Tool       :  modelsim-altera
+Simulation Language   :  verilog
+Simulation Mode       :  GUI
+Sim Output File       :  pipeline.vo
+Sim SDF File       :  pipeline_v.sdo
+Sim dir               :  simulation\modelsim
+
+=======================================================
+
+Info: Starting NativeLink simulation with ModelSim-Altera software
+Sourced NativeLink script f:/altera/12.0/quartus/common/tcl/internal/nativelink/modelsim.tcl
+Warning: File pipeline_run_msim_gate_verilog.do already exists - backing up current file as pipeline_run_msim_gate_verilog.do.bak2
+Info: Spawning ModelSim-Altera Simulation software 

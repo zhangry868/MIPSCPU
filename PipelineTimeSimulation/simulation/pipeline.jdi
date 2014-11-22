@@ -1,0 +1,8 @@
+<sld_project_info>
+  <file_info>
+    <file checksum="0x008CE3D8" device="EP2C70F896C6" path="pipeline.sof" usercode="0xFFFFFFFF"/>
+    <file checksum="0x1835B55F" device="EPCS16" path="pipeline.pof" usercode="0x00000000"/>
+  </file_info>
+  <hub_info ir_width="0" node_count="0"/>
+  <node_info/>
+</sld_project_info>

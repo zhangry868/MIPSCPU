@@ -1,0 +1,32 @@
+module MIPS_Single_Register(Rs_addr,Rt_addr,Rd_addr,Clk,Rd_write_byte_en,Rd_in,Rs_out,Rt_out)
+input Clk;
+input [4:0]Rs_addr,Rt_addr,Rd_addr;
+input [7:0]Rd_in;
+input Rd_write_byte_en;
+output [7:0]Rs_out,Rt_out; 
+reg [7:0]register[31:0];
+
+always @(negedge Clk)
+begin
+	 if(Rd_addr!=0 && Rd_write_byte_en)
+			register[Rd_addr][7:0] <= Rd_in[7:0];
+end
+
+assign Rs_out = register[Rs_addr];
+assign Rt_out = register[Rt_addr];
+
+endmodule
+
+module MIPS_Register(Rs_addr,Rt_addr,Rd_addr,Clk,Rd_write_byte_en,Rd_in,Rs_out,Rt_out);
+input Clk;
+input [4:0]Rs_addr,Rt_addr,Rd_addr;
+input [31:0]Rd_in;
+input [3:0]Rd_write_byte_en;
+output [31:0]Rs_out,Rt_out; 
+
+MIPS_Single_Register(Rs_addr,Rt_addr,Rd_addr,Clk,Rd_write_byte_en[0],Rd_in[7:0],Rs_out[7:0],Rt_out[7:0]);
+MIPS_Single_Register(Rs_addr,Rt_addr,Rd_addr,Clk,Rd_write_byte_en[1],Rd_in[15:8],Rs_out[15:8],Rt_out[15:8]);
+MIPS_Single_Register(Rs_addr,Rt_addr,Rd_addr,Clk,Rd_write_byte_en[2],Rd_in[23:16],Rs_out[23:16],Rt_out[23:16]);
+MIPS_Single_Register(Rs_addr,Rt_addr,Rd_addr,Clk,Rd_write_byte_en[3],Rd_in[31:24],Rs_out[31:24],Rt_out[31:24]);
+
+endmodule

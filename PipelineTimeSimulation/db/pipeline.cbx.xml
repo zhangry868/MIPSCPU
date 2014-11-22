@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="pipeline">
+		<CBX_INST_ENTRY INSTANCE_NAME="|pipeline|DataMemory:datamemory|altsyncram:ram_rtl_0" CBX_FILE_NAME="altsyncram_34i1.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|pipeline|MIPS_Register:mipsregister|altsyncram:register_rtl_0" CBX_FILE_NAME="altsyncram_uoj1.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

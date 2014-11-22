@@ -1,0 +1,476 @@
+module Controller(
+input[5:0] Op,
+input[4:0] Rs,
+input[4:0] Rt,
+input[4:0] Rd,
+input[4:0] Shamt,
+input[5:0] Func,
+//------------------------
+output reg RegDt0,
+output reg ID_RsRead,
+output reg ID_RtRead,
+output reg[1:0] Ex_top,
+//------------------------Order up to down
+output reg BranchDelay,  //?
+output reg OverflowEn,
+output reg[2:0] Condition,
+output reg Branch,
+output reg[2:0] PC_write,
+output reg[3:0] Mem_Write_Byte_en,    
+output reg[3:0] Rd_Write_Byte_en,  
+output reg MemWBSrc,
+output reg Jump,
+output reg ALUShiftSel,
+output reg[2:0] MemDataSrc,
+output reg ALUSrcA,
+output reg ALUSrcB,
+output reg[3:0] ALUOp,
+output reg[1:0] RegDst,
+output reg ShiftAmountSrc,
+output reg[1:0] Shift_Op
+);
+always @(Func or Op or Rt) begin
+	case(Op)
+		6'b000000:begin
+			RegDt0 = 1'b1;
+			ID_RtRead = 1'b1;
+			Condition = 3'bxxx;
+			Branch = 1'b0;
+			PC_write = Rt[2:0];
+			Mem_Write_Byte_en = 4'b0000;
+			Rd_Write_Byte_en = 4'b1111;
+			MemWBSrc = 1'b0;
+			Jump = 1'b0;
+			MemDataSrc = 3'bxxx;
+			ALUSrcA = 1'b0;
+			ALUSrcB = 1'b0;
+			RegDst = 2'b00;
+			case(Func)
+				6'b100000: begin                                 //add-1      
+					ID_RsRead = 1'b1;
+					Ex_top = 2'bxx ;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b1;
+					ALUShiftSel = 1;
+					ALUOp = 4'b1110;
+					ShiftAmountSrc = 1'bx;
+					Shift_Op = 2'bxx;
+				end
+				6'b100010: begin                                 //sub-4
+					ID_RsRead = 1'b1;
+					Ex_top = 2'bxx ;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b1; 
+					ALUShiftSel = 1;
+					ALUOp = 4'b1111;
+					ShiftAmountSrc = 1'bx;
+					Shift_Op = 2'bxx;
+				end
+				6'b100011: begin                                 //subu-5
+					ID_RsRead = 1'b1;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					ALUShiftSel = 1;
+					ALUOp = 4'b0001;
+					ShiftAmountSrc = 1'bx;
+					Shift_Op = 2'bxx;
+				end
+				6'b100110: begin                                 //xor - 7
+					ID_RsRead = 1'b1;
+					Ex_top = 2'bxx;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0; 
+					ALUShiftSel = 1;
+					ALUOp = 4'b1001;
+					ShiftAmountSrc = 1'bx;
+					Shift_Op = 2'bxx;
+				end
+				6'b101011: begin                                 //sltu-13
+					ID_RsRead = 1'b1;
+					Ex_top = 2'bxx;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;  
+					ALUShiftSel = 1;
+					ALUOp = 4'b0111;
+					ShiftAmountSrc = 1'bx;
+					Shift_Op = 2'bxx;
+				end
+				6'b000111: begin                                 //srav-11
+					ID_RsRead = 1'b1;
+					Ex_top = 2'bxx;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					ALUShiftSel = 0;
+					ALUOp = 4'bxxxx;
+					ShiftAmountSrc = 1;
+					Shift_Op = 2'b10;
+				end
+				6'b000010: begin                                 //rotr-12
+					ID_RsRead = 1'b0;
+					Ex_top = 2'bxx;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0; 
+					ALUShiftSel = 0;
+					ALUOp = 4'bxxxx;
+					ShiftAmountSrc = 0;
+					Shift_Op = 2'b11;
+				end
+			endcase
+		end
+		6'b000010:begin                                        //j-15
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b0000;  
+					MemWBSrc = 0;
+					Jump = 1'b1;
+					//ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					//ALUSrcB = 1'b0;
+					//ALUOp = 4'b0001;
+					//RegDst = 2'b00;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b000001:begin                                       
+			case(Rt)
+				5'b10001: begin                                  //bgezal - 16
+					RegDt0 = 0;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b1; 
+               OverflowEn = 1'b0;
+					Condition = 3'b011; 
+					Branch = 1'b1;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b0000;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					//ALUShiftSel = 1;
+					MemDataSrc = 2'b10;
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0001;
+					//RegDst = 2'b00;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;					
+				end
+				5'b00001: begin                                //bgez - 22
+					RegDt0 = 0;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					Condition = 3'b011; 
+					Branch = 1'b1;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b0000;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					//ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b0;
+					//ALUOp = 4'b0001;
+					//RegDst = 2'b00;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;	
+				end
+			endcase
+		end
+		6'b001000:begin                                        //addi-2
+					RegDt0 = 1;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b1;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b1110;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b001001:begin                                        //addiu-3
+					RegDt0 = 1;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0000;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b001010:begin                                        //slti-14
+					RegDt0 = 1;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b0;
+					ALUOp = 4'b0101;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b001110:begin                                        //xori-8
+					RegDt0 = 1;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b01;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b1001;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b001111:begin                                        //lui-17
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b10;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b1;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0000;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b011100:begin
+			case(Func)
+				6'b100000:begin                                  //clz-10
+					RegDt0 = 1;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					//Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b0;
+					ALUOp = 4'b0010;
+					RegDst = 2'b00;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+				end
+				6'b100001:begin                                  //clo-9
+					RegDt0 = 1;
+					ID_RsRead = 1'b1;
+					ID_RtRead = 1'b0;
+					//Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = //?
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b0;
+					ALUOp = 4'b0011;
+					RegDst = 2'b00;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+				end
+			endcase
+		end
+		6'b011111:begin                                        //seb-6
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b1;
+					//Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 0;
+					Jump = 1'b0;
+					ALUShiftSel = 1;
+					//MemDataSrc = 	
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b1010;
+					RegDst = 2'b00;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b100010:begin                                      //lwl - 18
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 1;
+					Jump = 1'b0;
+					ALUShiftSel = 1'b1;
+					MemDataSrc = 3'bxxx;
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0000;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b100011:begin                                      //lw - 19
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b0;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b0000;    
+					Rd_Write_Byte_en = 4'b1111;  
+					MemWBSrc = 1;
+					Jump = 1'b0;
+					ALUShiftSel = 1'b1;
+					MemDataSrc = 3'bxxx;
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0000;
+					RegDst = 2'b01;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b101011:begin                                      //sw - 20
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b1;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b1111;    
+					Rd_Write_Byte_en = 4'b0000;  
+					MemWBSrc = 1;
+					Jump = 1'b0;
+					ALUShiftSel = 1'b1;
+					MemDataSrc = 3'b001;
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0000;
+					RegDst = 2'bxx;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+		6'b101110:begin                                      //swr - 21
+					RegDt0 = 1;
+					ID_RsRead = 1'b0;
+					ID_RtRead = 1'b1;
+					Ex_top = 2'b00;
+					BranchSel= 1'b0; 
+               OverflowEn = 1'b0;
+					//Condition = x; 
+					Branch = 1'b0;
+					PC_write = Rt[2:0];
+					Mem_Write_Byte_en = 4'b1111;    
+					Rd_Write_Byte_en = 4'b0000;  
+					MemWBSrc = 1;
+					Jump = 1'b0;
+					ALUShiftSel = 1'b1;
+					MemDataSrc = 3'b001;
+					ALUSrcA = 1'b0;
+					ALUSrcB = 1'b1;
+					ALUOp = 4'b0000;
+					RegDst = 2'bxx;
+					//ShiftAmountSrc = x;
+					//Shift_Op = x;
+		end
+	endcase
+end
+endmodule

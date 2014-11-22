@@ -1,0 +1,43 @@
+m255
+K3
+13
+cModel Technology
+Z0 dF:\altera\ComputerArchitectrue\pipeline2TimeSimulation\simulation\modelsim
+vpipeline
+IGnPTVjY1d?BMNEVWezllX1
+VLJ3QEci^bko;Fe?jMR[Qi3
+Z1 dF:\altera\ComputerArchitectrue\pipeline2TimeSimulation\simulation\modelsim
+w1372522702
+8pipeline.vo
+Fpipeline.vo
+L0 31
+Z2 OV;L;10.0d;49
+r1
+31
+Z3 o-vlog01compat -work work -O0
+!s100 5bhKfBN7<2^`z]mOle1hY1
+!s85 0
+!s108 1372522924.649000
+!s107 pipeline.vo|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|pipeline.vo|
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+. -O0
+vpipeline_vlg_tst
+!s100 FAj2@UoZlcD=2[Yo1S[d23
+IghV42iZnX7@ZUE>O7Oje50
+V3WzkM8<4M:7dJWWGl3n??0
+R1
+w1372522382
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt
+L0 28
+R2
+r1
+!s85 0
+31
+!s108 1372522927.381000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt|
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim -O0

@@ -1,0 +1,603 @@
+m255
+K3
+13
+cModel Technology
+Z0 dF:\altera\ComputerArchitectrue\pipeline2TimeSimulation\simulation\modelsim
+vAdder
+I8cJHZGAJEOloHRR32_Goe0
+VamY8AKQG=zKVR^0jfI;K73
+Z1 dF:\altera\ComputerArchitectrue\pipeline2TimeSimulation\simulation\modelsim
+Z2 w1402669881
+Z3 8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ALU.v
+Z4 FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ALU.v
+L0 11
+Z5 OV;L;10.0d;49
+r1
+31
+Z6 !s108 1372430406.461000
+Z7 !s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ALU.v|
+Z8 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ALU.v|
+Z9 o-vlog01compat -work work -O0
+Z10 !s92 -vlog01compat -work work +incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation -O0
+n@adder
+!s100 gi1<[:a^H0W^GlzX^Hkf41
+!s85 0
+!s101 -O0
+vALU
+I?4NEFOIf^TGHk0nD3U:XO3
+V8ZUamlV[G?a2mcnkP?[h=0
+R1
+R2
+R3
+R4
+L0 50
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+n@a@l@u
+!s100 56R:ldRja:P3ML_4K;E041
+!s85 0
+!s101 -O0
+vALU_Controller
+IcDh4B<iQnecTheoeRNbog1
+VY@zT>SaNS[k;mi7kFAlkf3
+R1
+R2
+R3
+R4
+L0 1
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+n@a@l@u_@controller
+!s100 aEA6HLh]^[h]_V8ODhBbC2
+!s85 0
+!s101 -O0
+vCondition_Check
+IECnlJnFU[eK_XeL@iKcSi2
+VFIRYQMIQjV7Jn<:4k>zY41
+R1
+Z11 w1403059441
+Z12 8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Condition_Check.v
+Z13 FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Condition_Check.v
+L0 34
+R5
+r1
+31
+Z14 !s108 1372430405.097000
+Z15 !s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Condition_Check.v|
+Z16 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Condition_Check.v|
+R9
+R10
+n@condition_@check
+!s100 eDgLOVkZkVR:Hcj;a`n=P1
+!s85 0
+!s101 -O0
+vController
+I?dhQ5SMBmL5ZGoOL18=hP0
+VPB?MEWf`?R8lAzO3d3nad2
+R1
+w1403656425
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Controller.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Controller.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@controller
+!s100 7G2d:Hz8GDCNRP0RndIS]0
+!s85 0
+!s108 1372430408.131000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Controller.v|
+!s101 -O0
+vDataMemory
+I_nW<2[SHPh]n?7;82POWd0
+V1MHY?_WieXIoKMTZ^74Hz2
+R1
+Z17 w1401803224
+Z18 8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/DataMemory.v
+Z19 FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/DataMemory.v
+L0 31
+R5
+r1
+31
+Z20 !s108 1372430404.190000
+Z21 !s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/DataMemory.v|
+Z22 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/DataMemory.v|
+R9
+R10
+n@data@memory
+!s100 I6gl5YZ2[EEaCkik73SCe0
+!s85 0
+!s101 -O0
+vEX_MEM_Seg
+IKBnGd49>dmTYOWDfA4cIE1
+VdaB4__M[?mIFhOV0E5::;2
+R1
+w1401544720
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/EX_MEM_Seg.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/EX_MEM_Seg.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@e@x_@m@e@m_@seg
+!s100 a9iW;OR:aaibYeZ1<KgF33
+!s85 0
+!s108 1372430403.954000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/EX_MEM_Seg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/EX_MEM_Seg.v|
+!s101 -O0
+vForward
+IXhK;Z<B=PKXU6Q3^aAR`T1
+V@01dI?7TCn@CzZD>e8KzF3
+R1
+w1372428651
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Forward.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Forward.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@forward
+!s100 cne<X1`Nf:UTnAgLSX<761
+!s85 0
+!s108 1372430403.694000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Forward.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Forward.v|
+!s101 -O0
+vHazardControl
+Ijf_L?Im:I;ZiQJP_Z06WI1
+V>Fa`I;d8EzUKdfoO]V0H`2
+R1
+Z23 w1402484799
+Z24 8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/HazardControl.v
+Z25 FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/HazardControl.v
+L0 11
+R5
+r1
+31
+Z26 !s108 1372430400.126000
+Z27 !s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/HazardControl.v|
+Z28 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/HazardControl.v|
+R9
+R10
+n@hazard@control
+!s100 alKC<S986aS:EJ^Zl;bRA3
+!s85 0
+!s101 -O0
+vID_EX_Seg
+IVKC:INR^doKmoBC__RYII3
+V<KJmG=kZobbU`]U4^OZeF3
+R1
+w1402878485
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ID_EX_Seg.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ID_EX_Seg.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@i@d_@e@x_@seg
+!s100 DiA<c2_Q9Kn9J]lVKjk=80
+!s85 0
+!s108 1372430403.420000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ID_EX_Seg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/ID_EX_Seg.v|
+!s101 -O0
+vIF_ID_Seg
+IPcA[JQ20FI^dZ1D]g@bOV0
+VZfdKcnH<ce5:[8MeaP@LE3
+R1
+w1369979004
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/IF_ID_Seg.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/IF_ID_Seg.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@i@f_@i@d_@seg
+!s100 m^[1c`nCi3;Io7ZjKST6S2
+!s85 0
+!s108 1372430403.112000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/IF_ID_Seg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/IF_ID_Seg.v|
+!s101 -O0
+vInstruMemory
+IWh[JQPSkTJ31n9R[[hC600
+ViIPeCD?2NzGFAlV_I@;SB1
+R1
+w1402415321
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/InsruMemory.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/InsruMemory.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@instru@memory
+!s100 Rc>iiKRm=Ih0KLBPTSNz:2
+!s85 0
+!s108 1372430402.719000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/InsruMemory.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/InsruMemory.v|
+!s101 -O0
+vJudgeBit
+IIVJccPTE7W9mj>74E_K030
+VJQUFXZ1gSIeao:<z@X:F_0
+R1
+R2
+R3
+R4
+L0 34
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+n@judge@bit
+!s100 2_9>@:Ha3d>5TQGnKE2K00
+!s85 0
+!s101 -O0
+vMEM_WB_Seg
+IGfiUQ1g=lj3:I7;F[h=0a0
+Vg@0EXMajR@6FIbVSAAcI91
+R1
+w1401543279
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MEM_WB_Seg.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MEM_WB_Seg.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@m@e@m_@w@b_@seg
+!s100 ZgL:5;i5daR]@_]9foTPa0
+!s85 0
+!s108 1372430402.449000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MEM_WB_Seg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MEM_WB_Seg.v|
+!s101 -O0
+vMemory_ShiftOutput
+Iijie0AU8KLh8DA@L9WccG3
+VzF=N_ogCf]:gY?Q4^liCz0
+R1
+Z29 w1401638882
+Z30 8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Memory_Shift.v
+Z31 FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Memory_Shift.v
+L0 21
+R5
+r1
+31
+Z32 !s108 1372430409.536000
+Z33 !s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Memory_Shift.v|
+Z34 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Memory_Shift.v|
+R9
+R10
+n@memory_@shift@output
+!s100 BLKRzl0e>@D3dW5o6m]b;2
+!s85 0
+!s101 -O0
+vMIPS_Register
+IBHL6]6LFBH^H5PG=DgE>h1
+VL:?Zgc;^l[05bl7TfOlKm0
+R1
+w1401818515
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MIPS_Register.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MIPS_Register.v
+L0 35
+R5
+r1
+31
+R9
+R10
+n@m@i@p@s_@register
+!s100 S?ja8kbJWU_KazBTiNi2L0
+!s85 0
+!s108 1372430401.935000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MIPS_Register.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/MIPS_Register.v|
+!s101 -O0
+vMIPS_Shifter
+I;AianGHLz5AbmTOHIOaLl1
+V@Wl2X74:Dj[[Zij1=g]en1
+R1
+Z35 w1400652491
+Z36 8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Shifter.v
+Z37 FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Shifter.v
+L0 12
+R5
+r1
+31
+Z38 !s108 1372430400.817000
+Z39 !s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Shifter.v|
+Z40 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/Shifter.v|
+R9
+R10
+n@m@i@p@s_@shifter
+!s100 WzV^@TEC<`g8d557]>CLd0
+!s85 0
+!s101 -O0
+vMux4_1
+IGfh=U[K3YfGJ^5?9c6<d>1
+VCj]ib6`5EcGePH@Z9B@Z40
+R1
+R35
+R36
+R37
+L0 1
+R5
+r1
+31
+R38
+R39
+R40
+R9
+R10
+n@mux4_1
+!s100 4NKA4ZW@bzA5PXefmn;i`0
+!s85 0
+!s101 -O0
+vMUX4_1
+I42V_?e=n^0VJS<do4d0JO3
+VTM91NzAdUHB6T2^<V8igR0
+R1
+R29
+R30
+R31
+L0 11
+R5
+r1
+31
+R32
+R33
+R34
+R9
+R10
+n@m@u@x4_1
+!s100 ;3z4i7C0cE_eAFJXfHe171
+!s85 0
+!s101 -O0
+vMux4_1_3
+IL[X?loFfeY^=]T]LLoVQX2
+V6JOOQlCJ@d[`onTFoMI=`2
+R1
+R23
+R24
+R25
+L0 1
+R5
+r1
+31
+R26
+R27
+R28
+R9
+R10
+n@mux4_1_3
+!s100 FkMflCmNM7aW1?AOd9`?C3
+!s85 0
+!s101 -O0
+vMUX4_1_SL
+I4:HUD1VK<X]4^Y;E<P72G1
+VeZjQA]R]OLihbS@gF8::>3
+R1
+R11
+R12
+R13
+L0 23
+R5
+r1
+31
+R14
+R15
+R16
+R9
+R10
+n@m@u@x4_1_@s@l
+!s100 _m>N`kbhbUCRRAX@l^:CO2
+!s85 0
+!s101 -O0
+vMUX8_1
+I0^hM@<L1klLR<3NZ4IGX10
+VFgSo8O_d^R]?kP<8jZX1G3
+R1
+R29
+R30
+R31
+L0 1
+R5
+r1
+31
+R32
+R33
+R34
+R9
+R10
+n@m@u@x8_1
+!s100 Zc?KO4[kOKBFNYH]`hKgZ1
+!s85 0
+!s101 -O0
+vMUX8_1_ALU
+I7N4@?`5:3>H0hiQ>i00Hb1
+VO2F<8]CikY[kZD@VX`PRz1
+R1
+R2
+R3
+R4
+L0 24
+R5
+r1
+31
+R6
+R7
+R8
+R9
+R10
+n@m@u@x8_1_@a@l@u
+!s100 5_olenFgVCl>z`LmJ:8U@0
+!s85 0
+!s101 -O0
+vMUX8_1_Icontrol
+IJl<VYGK3z9P7;EWi?l0]L3
+V8P]C9Bl30RmC3MS_`K;fi0
+R1
+R11
+R12
+R13
+L0 1
+R5
+r1
+31
+R14
+R15
+R16
+R9
+R10
+n@m@u@x8_1_@icontrol
+!s100 XIgVYkgR9L;nl8lbChJb^0
+!s85 0
+!s101 -O0
+vMUX8_1_SL
+IV4`4KMi7MmSGI8C;dFYS]1
+VHWkXleG5BEjoPk^WI`VI`1
+R1
+R11
+R12
+R13
+L0 11
+R5
+r1
+31
+R14
+R15
+R16
+R9
+R10
+n@m@u@x8_1_@s@l
+!s100 f6@G0[E>8QfGbE@Lk53Jn3
+!s85 0
+!s101 -O0
+vNumExpansion
+Icj=@oPNL;Lh`Hih^eYR6k3
+VBH]a09n?hi6819[@[h2Un1
+R1
+w1401452725
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/NumExpansion.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/NumExpansion.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@num@expansion
+!s100 _5CIVbVa6]N__1W;8JcJV1
+!s85 0
+!s108 1372430401.315000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/NumExpansion.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/NumExpansion.v|
+!s101 -O0
+vPC
+IP7iLB2kXb]5e;UUnmHVF82
+VWS9>QZMVlcKBnm:k1z1F@2
+R1
+w1401508358
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/PC.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/PC.v
+L0 1
+R5
+r1
+31
+R9
+R10
+n@p@c
+!s100 320?O`@KHmJhQTnYdN]MC0
+!s85 0
+!s108 1372430408.991000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/PC.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/PC.v|
+!s101 -O0
+vpipeline
+IYHF14X1P1kRX57;Z:Ti:l1
+V<=G11BX@6cTTYSM>e4]d21
+R1
+w1372430391
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/pipeline.v
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/pipeline.v
+L0 1
+R5
+r1
+31
+R9
+R10
+!s100 jL]9Q@:SMVa1^MZl25X@i2
+!s85 0
+!s108 1372430407.794000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/pipeline.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/pipeline.v|
+!s101 -O0
+vpipeline_vlg_tst
+!s100 jX:Uf_5:B:edn98M1fKV23
+Il3?HKb0A8`E6k<gHcl3LX1
+V3WzkM8<4M:7dJWWGl3n??0
+R1
+w1372429987
+8F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt
+FF:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt
+L0 28
+R5
+r1
+!s85 0
+31
+!s108 1372430410.513000
+!s107 F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim|F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt|
+!s101 -O0
+R9
+!s92 -vlog01compat -work work +incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim -O0
+vRegister_ShiftOutput
+If:_[Sd7UzUE4iRLU6mPX20
+V63>JzC=SS;fA9]Lf:3@PA1
+R1
+R17
+R18
+R19
+L0 1
+R5
+r1
+31
+R20
+R21
+R22
+R9
+R10
+n@register_@shift@output
+!s100 J71G9Zl;=8dd3GX8GDBg12
+!s85 0
+!s101 -O0

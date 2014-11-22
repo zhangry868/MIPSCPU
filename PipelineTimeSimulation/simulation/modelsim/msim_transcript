@@ -1,0 +1,103 @@
+# Reading F:/altera/12.0/modelsim_ase/tcl/vsim/pref.tcl 
+# do pipeline_run_msim_gate_verilog.do 
+# if {[file exists gate_work]} {
+# 	vdel -lib gate_work -all
+# }
+# vlib gate_work
+# vmap work gate_work
+# Copying F:\altera\12.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied F:\altera\12.0\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+. {pipeline.vo}
+# Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
+# -- Compiling module pipeline
+# 
+# Top level modules:
+# 	pipeline
+# 
+# vlog -vlog01compat -work work +incdir+F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim {F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt}
+# Model Technology ModelSim ALTERA vlog 10.0d Compiler 2012.01 Jan 18 2012
+# -- Compiling module pipeline_vlg_tst
+# 
+# Top level modules:
+# 	pipeline_vlg_tst
+# 
+# vsim -t 1ps +transport_int_delays +transport_path_delays -L cycloneii_ver -L gate_work -L work -voptargs="+acc"  pipeline_vlg_tst
+# vsim +transport_int_delays +transport_path_delays -L cycloneii_ver -L gate_work -L work -voptargs=\"+acc\" -t 1ps pipeline_vlg_tst 
+# Loading work.pipeline_vlg_tst
+# Loading work.pipeline
+# Loading cycloneii_ver.cycloneii_lcell_ff
+# Loading cycloneii_ver.cycloneii_lcell_comb
+# Loading cycloneii_ver.cycloneii_ram_block
+# Loading cycloneii_ver.cycloneii_ram_register
+# Loading cycloneii_ver.cycloneii_ram_pulse_generator
+# Loading cycloneii_ver.cycloneii_io
+# Loading cycloneii_ver.cycloneii_mux21
+# Loading cycloneii_ver.cycloneii_dffe
+# Loading cycloneii_ver.cycloneii_asynch_io
+# Loading cycloneii_ver.cycloneii_clkctrl
+# Loading cycloneii_ver.cycloneii_mux41
+# Loading cycloneii_ver.cycloneii_ena_reg
+# SDF 10.0d Compiler 2012.01 Jan 18 2012
+# 
+# Loading instances from pipeline_v.sdo
+# Loading cycloneii_ver.CYCLONEII_PRIM_DFFE
+# Loading timing data from pipeline_v.sdo
+# ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
+#    Time: 0 ps  Iteration: 0  Instance: /pipeline_vlg_tst File: F:/altera/ComputerArchitectrue/pipeline2TimeSimulation/simulation/modelsim/pipeline.vt
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Running testbench
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1871 ps, datain:1886 ps, 266 ps );
+#    Time: 1886 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg2|PC_Add_out[5] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1883 ps, datain:1889 ps, 266 ps );
+#    Time: 1889 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg2|PC_Add_out[4] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1889 ps, datain:1892 ps, 266 ps );
+#    Time: 1892 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg2|Immediate32_out[9] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5354): $hold( posedge clk &&& sloaddata:1896 ps, sdata:1920 ps, 266 ps );
+#    Time: 1920 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg4|WBData_out[27] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5354): $hold( posedge clk &&& sloaddata:1901 ps, sdata:1922 ps, 266 ps );
+#    Time: 1922 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg4|WBData_out[13] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5353): $hold( posedge clk &&& reset:1894 ps, sload:1925 ps, 266 ps );
+#    Time: 1925 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg3|WBData_out[28] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1888 ps, datain:1932 ps, 266 ps );
+#    Time: 1932 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg2|Immediate32_out[3] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5354): $hold( posedge clk &&& sloaddata:1892 ps, sdata:1944 ps, 266 ps );
+#    Time: 1944 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg4|Rd_out[4] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5353): $hold( posedge clk &&& reset:1892 ps, sload:1956 ps, 266 ps );
+#    Time: 1956 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg3|WBData_out[29] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5353): $hold( posedge clk &&& reset:1892 ps, sload:1956 ps, 266 ps );
+#    Time: 1956 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg3|WBData_out[17] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5353): $hold( posedge clk &&& reset:1892 ps, sload:1956 ps, 266 ps );
+#    Time: 1956 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg3|WBData_out[30] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5354): $hold( posedge clk &&& sloaddata:1897 ps, sdata:1966 ps, 266 ps );
+#    Time: 1966 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg4|WBData_out[1] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1894 ps, datain:1998 ps, 266 ps );
+#    Time: 1998 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg2|Rs_out[0] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1890 ps, datain:2 ns, 266 ps );
+#    Time: 2 ns  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg2|Rs_out[2] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5352): $hold( posedge clk &&& reset:1890 ps, sclr:2011 ps, 266 ps );
+#    Time: 2011 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg3|Zero_out 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5354): $hold( posedge clk &&& sloaddata:1890 ps, sdata:2022 ps, 266 ps );
+#    Time: 2022 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg4|MemWBSrc_out 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5354): $hold( posedge clk &&& sloaddata:1894 ps, sdata:2022 ps, 266 ps );
+#    Time: 2022 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg3|Rd_Write_Byte_en_out[0] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5353): $hold( posedge clk &&& reset:1878 ps, sload:2048 ps, 266 ps );
+#    Time: 2048 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg3|WBData_out[24] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1894 ps, datain:2069 ps, 266 ps );
+#    Time: 2069 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg2|Rt_out[1] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1894 ps, datain:2082 ps, 266 ps );
+#    Time: 2082 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg2|Rs_out[1] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1889 ps, datain:2084 ps, 266 ps );
+#    Time: 2084 ps  Iteration: 0  Instance: /pipeline_vlg_tst/i1/\seg2|Immediate32_out[10] 
+# ** Error: F:/altera/12.0/modelsim_ase/win32aloem/../altera/verilog/src/cycloneii_atoms.v(5351): $hold( posedge clk &&& nosloadsclr:1889 ps, datain:2094 ps, 266 ps );
+#    Time: 2094 ps  Iteration: 1  Instance: /pipeline_vlg_tst/i1/\seg2|Immediate32_out[27] 
+# Break key hit 
+# Simulation stop requested.

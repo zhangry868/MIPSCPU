@@ -1,0 +1,23 @@
+module Forward(
+input[4:0] Rt_From_ID_EX,
+input[4:0] Rs_From_ID_EX,
+input[4:0] Rd_From_EX_MEM,
+input[3:0] RegWrite_From_EX_MEM,
+input[4:0] Rd_From_MEM_WB,
+input[3:0] RegWrite_From_MEM_WB,
+
+output [1:0] Rs_EX_Forward,Rt_EX_Forward,
+//LoudUse_Forward
+input[4:0] Rt_From_IF_ID,
+input[4:0] Rs_From_IF_ID,
+input[4:0] Rd_From_ID_EX,
+
+output Rs_LoudUse_Forward,Rt_LoudUse_Forward
+);
+
+assign Rs_EX_Forward = 2'b00;
+assign Rt_EX_Forward = 2'b00;
+assign Rs_LoudUse_Forward = 1'b0;
+assign Rt_LoudUse_Forward = 1'b0;
+
+endmodule

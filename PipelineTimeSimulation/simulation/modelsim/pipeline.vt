@@ -1,0 +1,130 @@
+// Copyright (C) 1991-2012 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "06/30/2013 00:02:07"
+                                                                                
+// Verilog Test Bench template for design : pipeline
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ns/ 1 ps
+module pipeline_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg Clk;
+// wires                                               
+wire [3:0]  ALUOp_ID;
+wire ALUSrcA_ID;
+wire ALUSrcB_ID;
+wire [31:0]  ALU_OpA;
+wire [31:0]  ALU_OpB;
+wire [31:0]  ALU_out;
+wire [31:0]  Data_out;
+wire [31:0]  IR_IF;
+wire [31:0]  Immediate32_ID;
+wire [31:0]  Immediate32_IF;
+wire Jump_ID;
+wire [2:0]  MemDataSrc_ID;
+wire [31:0]  MemData_EX;
+wire [3:0]  MemWriteEn;
+wire [31:0]  OperandA_ID;
+wire [31:0]  OperandB_ID;
+wire [2:0]  PCSrc;
+wire [31:0]  PC_in;
+wire [31:0]  PC_out;
+wire [3:0]  RdWriteEn;
+wire [4:0]  Rd_EX;
+wire [4:0]  Rd_ID;
+wire [4:0]  Rd_Mem;
+wire [3:0]  Rd_Write_Byte_en_Mem;
+wire [31:0]  Rd_in;
+wire [31:0]  RegShift;
+wire [1:0]  Rs_EX_Forward;
+wire [4:0]  Rs_ID;
+wire [1:0]  Rt_EX_Forward;
+wire [4:0]  Rt_ID;
+wire [4:0]  ShiftAmount;
+wire [31:0]  Shifter_out;
+wire [31:0]  WBData_EX;
+wire flash_EX;
+wire flash_ID;
+
+// assign statements (if any)                          
+pipeline i1 (
+// port map - connection between master ports and signals/registers   
+	.ALUOp_ID(ALUOp_ID),
+	.ALUSrcA_ID(ALUSrcA_ID),
+	.ALUSrcB_ID(ALUSrcB_ID),
+	.ALU_OpA(ALU_OpA),
+	.ALU_OpB(ALU_OpB),
+	.ALU_out(ALU_out),
+	.Clk(Clk),
+	.Data_out(Data_out),
+	.IR_IF(IR_IF),
+	.Immediate32_ID(Immediate32_ID),
+	.Immediate32_IF(Immediate32_IF),
+	.Jump_ID(Jump_ID),
+	.MemDataSrc_ID(MemDataSrc_ID),
+	.MemData_EX(MemData_EX),
+	.MemWriteEn(MemWriteEn),
+	.OperandA_ID(OperandA_ID),
+	.OperandB_ID(OperandB_ID),
+	.PCSrc(PCSrc),
+	.PC_in(PC_in),
+	.PC_out(PC_out),
+	.RdWriteEn(RdWriteEn),
+	.Rd_EX(Rd_EX),
+	.Rd_ID(Rd_ID),
+	.Rd_Mem(Rd_Mem),
+	.Rd_Write_Byte_en_Mem(Rd_Write_Byte_en_Mem),
+	.Rd_in(Rd_in),
+	.RegShift(RegShift),
+	.Rs_EX_Forward(Rs_EX_Forward),
+	.Rs_ID(Rs_ID),
+	.Rt_EX_Forward(Rt_EX_Forward),
+	.Rt_ID(Rt_ID),
+	.ShiftAmount(ShiftAmount),
+	.Shifter_out(Shifter_out),
+	.WBData_EX(WBData_EX),
+	.flash_EX(flash_EX),
+	.flash_ID(flash_ID)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+Clk = 1'b1;                                                       
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+#10
+Clk = ~Clk;                                                       
+//@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule

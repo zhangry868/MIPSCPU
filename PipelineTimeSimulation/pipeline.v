@@ -1,0 +1,249 @@
+module pipeline(
+input Clk,
+output [31:0] PC_in,PC_out,
+output [2:0]PCSrc,
+//1
+/*output[5:0] Op_IF,
+output[4:0] Rs_IF,Rt_IF,Rd_IF,Shamt_IF,
+output[5:0] Func_IF,
+*/
+//3
+/*output[31:0] Branch_addr_EX,PC_Add_EX,
+output[2:0] Condition_EX,
+output Branch_EX,
+output[2:0]PC_write_EX,
+output[3:0]Mem_Write_Byte_en_EX,Rd_Write_Byte_en_EX,
+output MemWBSrc_EX,OverflowEn_EX,
+output[31:0] MemData_EX,WBData_EX,
+output Less_EX,Zero_EX,Overflow_EX,
+output[4:0]Rd_EX,
+output flash_ID,flash_EX,
+
+//4
+output[31:0] MemData_Mem,Data_out,
+output[31:0] WBData_Mem,
+output MemWBSrc_Mem,
+output[3:0] Rd_Write_Byte_en_Mem,
+output[4:0] Rd_Mem,
+
+output [31:0] Immediate32_IF,ALU_OpA,ALU_OpB,ALU_out,RegShift,
+output [1:0] Rs_EX_Forward,Rt_EX_Forward,
+output [4:0]ShiftAmount
+*/
+output flash_ID,flash_EX,
+output [31:0] OperandA_ID,OperandB_ID,
+output [4:0] Rs_ID,Rt_ID,Rd_ID,Rd_EX,Rd_Mem,
+output [31:0] Immediate32_ID,
+output [2:0] MemDataSrc_ID,
+output ALUSrcA_ID,ALUSrcB_ID,Jump_ID,
+output [3:0] ALUOp_ID,Rd_Write_Byte_en_Mem,MemWriteEn,RdWriteEn,
+output [31:0] IR_IF,Shifter_out,Rd_in,MemData_EX,Data_out,WBData_EX,
+output [4:0]ShiftAmount,
+output [1:0] Rs_EX_Forward,Rt_EX_Forward,
+output [31:0] Immediate32_IF,ALU_OpA,ALU_OpB,ALU_out,RegShift
+);
+//--------Harzard----------------------------------
+//wire[2:0] PCSrc;
+//--------PC---------------------------------------
+//wire[31:0] PC_in,PC_out;
+//--------PC+4-------------------------------------
+wire[31:0] PC_Add_IF;
+//--------InstruMemory-----------------------------
+wire[31:0] ins_data;//,IR_IF;
+//--------IF_ID Seg1-------------------------------
+wire stall_IF;
+wire flash_IF;
+wire[5:0] Op_IF;
+wire[4:0] Rs_IF,Rt_IF,Rd_IF,Shamt_IF;
+wire[5:0] Func_IF;
+
+//--------Controller-------------------------------
+wire RegDt0_IF,ID_RsRead_IF,ID_RtRead_IF;
+wire[1:0] Ex_top_IF;
+wire BranchSel_IF; 
+wire OverflowEn_IF;
+wire[2:0] Condition_IF;
+wire Branch_IF;
+wire[2:0] PC_write_IF;
+wire[3:0] Mem_Write_Byte_en_IF,Rd_Write_Byte_en_IF,ALUOp_IF; 
+wire MemWBSrc_IF;
+wire Jump_IF;
+wire ALUShiftSel_IF;
+wire[2:0] MemDataSrc_IF;
+wire ALUSrcA_IF,ALUSrcB_IF;
+//wire[3:0] ALUOp_IF;
+wire[1:0] RegDst_IF;
+wire ShiftAmountSrc_IF;
+wire[1:0] Shift_Op_IF;
+//---------Registers-------------------------------
+wire[31:0] Rs_out,Rt_out;//Rd_in
+//---------expansion-------------------------------
+//wire[31:0] Immediate32_IF;
+//---------ID_EX Seg2------------------------------
+wire stall_ID;//flash_ID,
+
+wire[31:0]PC_Add_ID;
+wire OverflowEn_ID;
+wire[2:0] Condition_ID;
+wire Branch_ID,EX_RsRead_ID,EX_RtRead_ID;
+wire[2:0] PC_write_ID;
+wire[3:0] Mem_Write_Byte_en_ID,Rd_Write_Byte_en_ID;
+wire MemWBSrc_ID,ALUShiftSel_ID;
+//wire[2:0] MemDataSrc_ID;
+//wire ALUSrcA_ID,ALUSrcB_ID;
+//wire[3:0] ALUOp_ID;
+wire[1:0] RegDst_ID;
+wire ShiftAmountSrc_ID;
+wire[1:0] Shift_Op_ID;
+//wire[31:0] OperandA_ID,OperandB_ID;
+//wire[4:0] Rs_ID,Rt_ID,Rd_ID;
+//wire[31:0] Immediate32_ID;
+wire[4:0]Shamt_ID;
+
+//----------JUMP branch---------------------------
+wire[31:0] Branch_addr_ID,Jump_Done;
+//----------Forward-------------------------------
+//wire[1:0] Rs_EX_Forward,Rt_EX_Forward;
+wire Rs_LoudUse_Forward,Rt_LoudUse_Forward;
+//----------After ALU and ID/EX mux---------------
+wire[31:0] mux4one,mux4two,mux4three,mux8one;
+wire Zero,Less,Overflow,BranchSel_ID;
+//wire[31:0] ALU_out;
+//----------Shifter-------------------------------
+//wire[31:0] Shifter_out;
+//wire [4:0]ShiftAmount;
+//----------Ex_MEM  Seg3--------------------------
+wire stall_EX;//flash_EX
+
+wire OverflowEn_EX;
+wire[31:0] Branch_addr_EX,PC_Add_EX;
+wire[2:0] Condition_EX;
+wire Branch_EX,MemWBSrc_EX;
+wire[2:0]PC_write_EX;
+wire[3:0]Mem_Write_Byte_en_EX,Rd_Write_Byte_en_EX;
+//wire[31:0] WBData_EX;//MemData_EX,
+wire Less_EX,Zero_EX,Overflow_EX;
+//wire[4:0]Rd_EX;
+
+//----------Condition------------------------------
+wire BranchValid;
+//wire[3:0] RdWriteEn;//,MemWriteEn;
+//----------DataMemory-----------------------------
+wire [31:0]Mem_data_shift;
+//----------MEM_WB  Seg4---------------------------
+
+wire stall_Mem,flash_Mem;
+wire[31:0] MemData_Mem;
+wire[31:0] WBData_Mem;
+wire MemWBSrc_Mem;
+//wire[3:0] Rd_Write_Byte_en_Mem;
+//wire[4:0] Rd_Mem;
+
+//-----------------------------------------------Hazard-------------------------------------------------------
+HazardControl hazard(BranchValid,Jump_ID,MemWBSrc_ID,ID_RsRead_IF,ID_RtRead_IF,Rs_IF,Rt_IF,Rt_ID,
+//output
+stall_IF,stall_ID,stall_EX,stall_Mem,flash_IF,flash_ID,flash_EX,flash_Mem,PCSrc);
+
+//-------------------------------------------------PC---------------------------------------------------------
+wire[31:0] PC_Add_IF_in;
+Mux4_1 PC_selcet(PC_Add_IF,Jump_Done,Branch_addr_EX,mux4one,PCSrc,PC_in);
+PC pc(Clk,PC_in,PC_out);
+
+//------------------------------------------------PC+4---------------------------------------------------------
+assign PC_Add_IF_in = PC_out + 4;
+
+//---------------------------------------------InstructMemory--------------------------------------------------
+parameter ins_we = 4'b0000;
+assign ins_data = 0;
+InstruMemory instruct(ins_data,PC_out,ins_we,Clk,IR_IF);
+
+//----------------------------------------------IF_ID_Seg Seg1-------------------------------------------------
+IF_ID_Seg Seg1(Clk,stall_IF,flash_IF,PC_Add_IF_in,IR_IF,PC_Add_IF,Op_IF,Rs_IF,Rt_IF,Rd_IF,Shamt_IF,Func_IF);
+
+//----------------------------------------------Controller-----------------------------------------------------
+Controller controller(Op_IF,Rs_IF,Rt_IF,Rd_IF,Shamt_IF,Func_IF,RegDt0_IF,ID_RsRead_IF,ID_RtRead_IF,Ex_top_IF,BranchSel_IF,
+OverflowEn_IF,Condition_IF,Branch_IF,PC_write_IF,Mem_Write_Byte_en_IF,Rd_Write_Byte_en_IF,MemWBSrc_IF,Jump_IF,
+ALUShiftSel_IF,MemDataSrc_IF,ALUSrcA_IF,ALUSrcB_IF,ALUOp_IF,RegDst_IF,ShiftAmountSrc_IF,Shift_Op_IF);
+
+//----------------------------------------------Registers------------------------------------------------------
+assign Rd_in = (MemWBSrc_Mem == 0)?WBData_Mem:MemData_Mem;
+MIPS_Register mipsregister(Rs_IF,((RegDt0_IF == 1'b1)?Rt_IF:5'b00000),Rd_Mem,Clk,Rd_Write_Byte_en_Mem,Rd_in,Rs_out,Rt_out);
+
+//--------------------------------------------expansion--------------------------------------------------------
+NumExpansion expansion({Rd_IF[4:0],Shamt_IF[4:0],Func_IF[5:0]},Ex_top_IF,Immediate32_IF);
+
+//------------------------------------------ID_EX   Seg2-------------------------------------------------------
+ID_EX_Seg seg2(Clk,stall_ID,flash_ID,PC_Add_IF,OverflowEn_IF,Condition_IF,Branch_IF,PC_write_IF,
+Mem_Write_Byte_en_IF,Rd_Write_Byte_en_IF,MemWBSrc_IF,Jump_IF,ALUShiftSel_IF,MemDataSrc_IF,ALUSrcA_IF,ALUSrcB_IF,
+ALUOp_IF,RegDst_IF,ShiftAmountSrc_IF,Shift_Op_IF,(Rs_LoudUse_Forward == 0)?Rs_out:Rd_in,
+(Rt_LoudUse_Forward == 0)?Rt_out:Rd_in,Rs_IF,Rt_IF,Rd_IF,Immediate32_IF,Shamt_IF,BranchSel_IF,
+{ID_RsRead_IF,ID_RtRead_IF},
+//output
+PC_Add_ID,OverflowEn_ID,Condition_ID,Branch_ID,PC_write_ID,Mem_Write_Byte_en_ID,Rd_Write_Byte_en_ID,
+MemWBSrc_ID,Jump_ID,ALUShiftSel_ID,MemDataSrc_ID,ALUSrcA_ID,ALUSrcB_ID,
+ALUOp_ID,RegDst_ID,ShiftAmountSrc_ID,Shift_Op_ID,OperandA_ID,OperandB_ID,Rs_ID,Rt_ID,Rd_ID,Immediate32_ID,Shamt_ID,
+BranchSel_ID,{EX_RsRead_ID,EX_RtRead_ID}
+);
+
+//----------------------------------------JUMP branch Module---------------------------------------------------
+assign Branch_addr_ID = PC_Add_ID + {Immediate32_ID[29:0],2'b00};
+assign Jump_Done = {PC_Add_ID[31:28],Rs_ID,Rt_ID,Immediate32_ID[15:0],2'b00};
+
+//-----------------------------------------forward-------------------------------------------------------------
+Forward forward({EX_RsRead_ID,EX_RtRead_ID},Rt_ID,Rs_ID,Rd_EX,RdWriteEn,Rd_Mem,Rd_Write_Byte_en_Mem,
+//output
+Rs_EX_Forward,Rt_EX_Forward,
+//input
+Rt_IF,Rs_IF,{ID_RsRead_IF,ID_RtRead_IF},
+//output
+Rs_LoudUse_Forward,Rt_LoudUse_Forward);
+
+//--------------------------------------after ALU and ID/EX Mux------------------------------------------------
+Mux4_1 mux4_one(OperandA_ID,WBData_EX,Rd_in,0,Rs_EX_Forward,mux4one);
+Mux4_1 mux4_two(OperandB_ID,WBData_EX,Rd_in,0,Rt_EX_Forward,mux4two);
+Mux4_1 mux4_three(Rd_ID,Rt_ID,5'b11111,0,RegDst_ID,mux4three);
+MUX8_1_ALU mux8_one(MemDataSrc_ID,32'b0,mux4two,PC_Add_ID + 4,0,0,0,0,0,mux8one);   //rt
+assign ALU_OpA = (ALUSrcA_ID == 0)?mux4one:0;
+assign ALU_OpB = (ALUSrcB_ID == 0)?mux4two:Immediate32_ID;
+ALU alu(ALU_OpA,ALU_OpB,ALUOp_ID,Zero,Less,Overflow,ALU_out);
+assign ShiftAmount = (ShiftAmountSrc_ID == 1)?mux4one[4:0]:Shamt_ID;
+//--------------------------------------------shifter-----------------------------------------------------------
+MIPS_Shifter shifter(mux4two,ShiftAmount,Shift_Op_ID,Shifter_out);
+
+//-----------------------------------------EX_MEM---Seg3--------------------------------------------------------
+EX_MEM_Seg seg3(Clk,stall_EX,flash_EX,Branch_addr_ID,PC_Add_ID,Condition_ID,Branch_ID,PC_write_ID,
+Mem_Write_Byte_en_ID,Rd_Write_Byte_en_ID,MemWBSrc_ID,OverflowEn_ID,
+mux8one,((BranchSel_ID == 1'b0) ? ((ALUShiftSel_ID == 1'b0)?Shifter_out:ALU_out): mux8one),Less,Zero,Overflow,mux4three,
+//output
+Branch_addr_EX,PC_Add_EX,Condition_EX,Branch_EX,PC_write_EX,Mem_Write_Byte_en_EX,
+Rd_Write_Byte_en_EX,MemWBSrc_EX,OverflowEn_EX,
+MemData_EX,WBData_EX,Less_EX,Zero_EX,Overflow_EX,Rd_EX
+);
+
+//----------------------------------------Condition--------------------------------------------------------------
+Condition_Check condition_check(Condition_EX,PC_write_EX,WBData_EX[1:0],MemWBSrc_EX,OverflowEn_EX,Branch_EX,Overflow_EX,Mem_Write_Byte_en_EX,Rd_Write_Byte_en_EX,Less_EX,Zero_EX,
+//output
+BranchValid,RdWriteEn,MemWriteEn);
+
+//---------------------------------------DataMemory--------------------------------------------------------------
+//wire [31:0] RegShift;
+Register_ShiftOutput regshift(MemData_EX,WBData_EX[1:0],{3'b101,PC_write_EX[2:0]},RegShift);
+DataMemory datamemory(RegShift,WBData_EX,MemWriteEn,Clk,Data_out);
+Memory_ShiftOutput memshift(Data_out,WBData_EX[1:0],{3'b100,PC_write_EX[2:0]},Mem_data_shift);
+
+//---------------------------------------DataMemoryWithCache-----------------------------------------------------
+//------------------------------You can choose one section from DataMemory or DataMemory with cache--------------
+/*wire hit;
+wire [63:0] ReadRam;
+wire writeback;
+wire [7:0] readramn,writeramn;
+Register_ShiftOutput regshift(MemData_EX,WBData_EX[1:0],{3'b101,PC_write_EX[2:0]},RegShift);
+Cache DataMemorywithCache(RegShift,WBData_EX,MemWriteEn,Clk,Data_out,hit,ReadRam,writeback,readramn,writeramn);
+Memory_ShiftOutput memshift(Data_out,WBData_EX[1:0],{3'b100,PC_write_EX[2:0]},Mem_data_shift);
+*/
+//--------------------------------------MEM_WB---Seg4------------------------------------------------------------
+MEM_WB_Seg seg4(Clk,stall_Mem,flash_Mem,Mem_data_shift,WBData_EX,MemWBSrc_EX,RdWriteEn,Rd_EX,
+//output
+MemData_Mem,WBData_Mem,MemWBSrc_Mem,Rd_Write_Byte_en_Mem,Rd_Mem);
+
+endmodule
