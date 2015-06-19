@@ -27,6 +27,7 @@ This project requires a Verilog simulator, such as Quartus.
 
 Rui-Yi Zhang <zhangry868@126.com><br>
 <http://github.com/zhangry868>
+
 Dong Xu<br>
 Qian-Ke Li<br>
 
